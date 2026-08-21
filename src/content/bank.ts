@@ -247,3 +247,127 @@ export const ATTENTION_ITEMS: McqItem[] = [
     why: "The objective predicts plausible continuations; nothing in it promises truth.",
   },
 ];
+
+// ---------------------------------------------------------------------------
+// Extended deck: LLM practice, tokenizers, scaling
+// ---------------------------------------------------------------------------
+
+export const ML_EXTRA_ITEMS: McqItem[] = [
+  {
+    id: "mx-tokenizer-units",
+    source: "ml-tokenizer-10",
+    prompt: "A tokenizer defines…",
+    choices: [
+      "The grammar of the prompt language",
+      "The units the model actually sees — subwords, not necessarily words",
+      "How attention heads are named",
+      "The output sampling temperature",
+    ],
+    answerIndex: 1,
+    why: "Every downstream number is a sequence over tokenizer units; spelling changes shift everything.",
+  },
+  {
+    id: "mx-pretrain-objective",
+    source: "ml-pretrain-10",
+    prompt: "Pretraining a base model means…",
+    choices: [
+      "One objective — predict the next token — on a lot of unlabeled text",
+      "Supervised labels for every sentence",
+      "Reinforcement learning from human feedback first",
+      "Memorizing a fixed question bank",
+    ],
+    answerIndex: 0,
+    why: "One objective, enormous corpus. Everything else — instruction following, alignment — layers on later.",
+  },
+  {
+    id: "mx-finetune-distribution",
+    source: "ml-finetune-10",
+    prompt: "Fine-tuning continues training on…",
+    choices: [
+      "A narrower distribution than pretraining saw",
+      "Random noise to reset the weights",
+      "Exactly the same data at a lower rate",
+      "Only the tokenizer vocabulary",
+    ],
+    answerIndex: 0,
+    why: "Narrower distribution, same machinery — which is also why narrow fine-tunes can forget broad skills.",
+  },
+  {
+    id: "mx-peft-idea",
+    source: "ml-peft-10",
+    prompt: "Parameter-efficient fine-tuning (PEFT) works by…",
+    choices: [
+      "Changing a small adapter instead of every weight in the model",
+      "Reducing the context window",
+      "Training only the tokenizer",
+      "Quantizing activations to integers",
+    ],
+    answerIndex: 0,
+    why: "Freeze the base, train the adapter: a fraction of the knobs, most of the steering.",
+  },
+  {
+    id: "mx-prompt-control",
+    source: "ml-prompt-10",
+    prompt: "Prompting is best understood as…",
+    choices: [
+      "Inference-time control written in tokens — no weight changes involved",
+      "A compile step for the model",
+      "A substitute for evaluation",
+      "Fine-tuning through the chat box",
+    ],
+    answerIndex: 0,
+    why: "Same weights, different conditioning. That is both its power and its fragility.",
+  },
+  {
+    id: "mx-rag-flow",
+    source: "ml-rag-10",
+    prompt: "Retrieval-augmented generation means…",
+    choices: [
+      "Look it up, then continue — external text joins the context before generation",
+      "Generating twice and keeping the longer answer",
+      "Compressing the KV cache",
+      "Training against a search engine",
+    ],
+    answerIndex: 0,
+    why: "The model conditions on retrieved passages, which grounds answers the weights alone cannot guarantee.",
+  },
+  {
+    id: "mx-scale-coupled",
+    source: "ml-scale-10",
+    prompt: "'Scale' in the curriculum is…",
+    choices: [
+      "Parameters, data, and compute as coupled knobs you must grow together",
+      "Only the parameter count",
+      "The physical size of the cluster",
+      "A synonym for quantization",
+    ],
+    answerIndex: 0,
+    why: "Grow one without the others and you waste it — the knobs are coupled by construction.",
+  },
+  {
+    id: "mx-lm-objective",
+    source: "ml-lm-obj-10",
+    prompt: "The language-model objective is…",
+    choices: [
+      "Predict the next token from the past",
+      "Classify sentences as true or false",
+      "Translate between languages",
+      "Summarize its own training data",
+    ],
+    answerIndex: 0,
+    why: "Everything a base LM does — style, facts, code — is in service of that one prediction.",
+  },
+  {
+    id: "mx-eval-leaderboard",
+    source: "ml-eval-llm-10",
+    prompt: "The curriculum's warning about LLM leaderboards?",
+    choices: [
+      "A leaderboard is not the job — benchmark wins do not guarantee your task works",
+      "Leaderboards update too slowly",
+      "They only test GPU throughput",
+      "They are identical to validation loss",
+    ],
+    answerIndex: 0,
+    why: "Fluent is not a diagnosis and a rank is not a use case. Evaluate on what you actually serve.",
+  },
+];

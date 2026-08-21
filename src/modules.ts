@@ -7,6 +7,7 @@ import { countAttempt, type SessionState } from "./lib/practice/session";
 import {
   ATTENTION_ITEMS,
   GRADIENT_ITEMS,
+  ML_EXTRA_ITEMS,
   NEURON_ITEMS,
   TRAINEVAL_ITEMS,
   type McqItem,
@@ -101,7 +102,7 @@ export function mountAttention(ctx: ModuleCtx): void {
 
 /** Mixed review across every deck. */
 export function mountScenarios(ctx: ModuleCtx): void {
-  const everything = [...GRADIENT_ITEMS, ...TRAINEVAL_ITEMS, ...NEURON_ITEMS, ...ATTENTION_ITEMS];
+  const everything = [...GRADIENT_ITEMS, ...TRAINEVAL_ITEMS, ...NEURON_ITEMS, ...ATTENTION_ITEMS, ...ML_EXTRA_ITEMS];
   mountMcq(ctx, "Mixed review", everything, paramNumber(ctx.payload, "questions", 5));
 }
 
